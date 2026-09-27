@@ -186,3 +186,22 @@ footer nav ul {
 	margin: 2em
 }
 
+#categories {
+	font-family: 'Syne';
+	font-weight: 700;
+	display: flex;
+	li {
+		cursor: pointer;
+		color:#1D6154;
+		background-color: white;
+		margin : 2em auto ;
+		padding: 16px;
+		width: auto;
+		border-radius: 60px;
+		border: solid 2px #1D6154;
+	}
+	li:hover, .selected {
+		color: white;
+		background-color: #1D6154;
+	}
+}
