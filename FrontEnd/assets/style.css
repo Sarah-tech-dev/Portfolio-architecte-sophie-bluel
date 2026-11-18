@@ -84,7 +84,11 @@ h1 > span {
 	font-family: 'Work Sans';
 	font-size:10px;
 	letter-spacing: 0.1em;
-;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }
 
 h2{
@@ -167,7 +171,8 @@ li:hover {
 		border-radius: 60px;
 		border: solid 2px #1D6154;
 	}
-	li:hover, .selected {
+	li:hover,
+	.selected {
 		color: white;
 	}
 	li:hover {
@@ -180,33 +185,43 @@ li:hover {
 	}
 }
 
-#contact {
+#contact,
+#login {
 	width: 50%;
-margin: auto;
+	margin: auto;
 }
-#contact > * {
-	text-align: center;
 
+#contact > *,
+#login > * {
+	text-align: center;
 }
-#contact h2{
+
+#contact h2, 
+#login h2 {
 	margin-bottom: 20px;
 }
-#contact form {
+
+#contact form,
+#login form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input {
+#contact input,
+#login input {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label {
+
+#contact label,
+#login label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
@@ -228,6 +243,24 @@ input[type="submit"]:hover {
 	background-color: #0E2F28;
 }
 
+#login-btn {
+	&.selected {
+		font-weight: bold;
+		
+	}
+}
+
+#login a {
+	align-self: center;
+	text-decoration: underline;
+}
+
+.error-message {
+	align-self: center;
+	color: red;
+	margin-top: 2rem;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
@@ -235,4 +268,3 @@ footer nav ul {
 	background-color: white;
 	padding: 1rem;
 }
-

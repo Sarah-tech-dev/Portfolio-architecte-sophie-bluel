@@ -4,6 +4,9 @@ const categoriesApiPath = 'http://localhost:5678/api/categories/';
 const categoriesTag = document.getElementById('categories');
 const galleryTag = document.getElementById('gallery');
 
+const loginBtn = document.getElementById('login-btn');
+const logoutBtn = document.getElementById('logout-btn');
+
 let allWorks = [];
 
 // Affichage des projets
@@ -82,11 +85,21 @@ function removeSelectedCategory() {
 async function init() {
     try {
         await getWorks();
-        await getCategories();
+        if (sessionStorage.getItem('token') !== null) {
+            loginBtn.parentNode.setAttribute('hidden', true);
+            logoutBtn.removeAttribute('hidden');
+        } else {
+            await getCategories();
+        }
     } catch (error) {
         console.error(error);
         galleryTag.textContent = error.message;
     }
+    logoutBtn.addEventListener('click', () => {
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('userId');
+        window.location.reload();
+    });
 }
 
 init();
