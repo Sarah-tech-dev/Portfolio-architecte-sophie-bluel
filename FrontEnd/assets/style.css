@@ -150,6 +150,36 @@ li:hover {
 	width: 100%;
 
 }
+
+#categories {
+	font-family: 'Syne';
+	font-weight: 700;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 1.5rem;
+	li {
+		cursor: pointer;
+		color:#1D6154;
+		background-color: white;
+		margin-left: 0.5rem;
+		padding: 16px;
+		width: auto;
+		border-radius: 60px;
+		border: solid 2px #1D6154;
+	}
+	li:hover, .selected {
+		color: white;
+	}
+	li:hover {
+		background-color: #0E2F28;
+		border: solid 2px #0E2F28;
+	}
+	.selected {
+		background-color: #1D6154;
+		border: solid 2px #1D6154;
+	}
+}
+
 #contact {
 	width: 50%;
 margin: auto;
