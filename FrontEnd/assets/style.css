@@ -328,6 +328,11 @@ input[type="submit"]:hover {
 	transition: .2s;
 }
 
+.dialog-container[aria-hidden="true"] {
+	visibility: hidden;
+	opacity: 0;
+}
+
 .dialog-container-box {
 	overflow: auto;
 	width: 35rem;
@@ -361,8 +366,13 @@ input[type="submit"]:hover {
 	select {
 		background-color: white;
 	}
-	.close-modal-btn {
-		align-self: flex-end;
+	.dialog-box-nav {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	.close-modal-btn,
+	.previous-modal-btn {
 		cursor: pointer;
 		background: none;
 		border: none;
@@ -371,11 +381,6 @@ input[type="submit"]:hover {
 		font: inherit;
 		color: inherit;
 	}
-}
-
-.dialog-container[aria-hidden="true"] {
-	visibility: hidden;
-	opacity: 0;
 }
 
 #gallery-form{
