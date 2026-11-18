@@ -57,6 +57,12 @@ body {
     display: flex;
     flex-direction: column;
 }
+
+header,
+main {
+	padding: 0 5rem;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -138,10 +144,19 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
-	margin-bottom: 1em;
+
+#portfolio {
+	.subtitle-container {
+		display: flex;
+		justify-content: center;
+		align-items: last baseline;
+	}
+	h2 {
+		text-align: center;
+		margin-bottom: 1em;
+	}
 }
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -152,7 +167,6 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
 
 #categories {
@@ -259,6 +273,36 @@ input[type="submit"]:hover {
 	align-self: center;
 	color: red;
 	margin-top: 2rem;
+}
+
+#edition-banner {
+	background-color: black;
+	color: white;
+	padding: 1rem 2rem;
+	text-align: center;
+	img {
+		filter: brightness(0) invert(1);
+		margin-right: 0.5rem;
+	}
+}
+
+#edition-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+	margin: 0;
+    font: inherit;
+	margin-left: 1.5rem;
+	font-size: 14px;
+	color: black;
+	font-weight: 400;
+}
+
+.icon-img {
+	height: 16px;
+	width: 16px;
+	alignment-baseline: central;
 }
 
 footer nav ul {

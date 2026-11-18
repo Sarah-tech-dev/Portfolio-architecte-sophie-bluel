@@ -11,6 +11,12 @@
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+<div id="edition-banner" hidden>
+	<p>
+		<img src="./assets/icons/edit.svg" class="icon-img" aria-hidden="true">
+		<span>Mode édition</span>
+	</p>
+</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
@@ -36,7 +42,13 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="subtitle-container">
+			<h2>Mes Projets</h2>
+			<button id="edition-btn" type="button" hidden>
+				<img src="./assets/icons/edit.svg" class="icon-img" aria-hidden="true">
+				<span>modifier</span>
+			</button>
+		</div>
 		<ul id="categories"></ul>
 		<div id="gallery" class="gallery"></div>
 	</section>

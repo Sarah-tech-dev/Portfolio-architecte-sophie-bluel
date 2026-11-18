@@ -7,6 +7,9 @@ const galleryTag = document.getElementById('gallery');
 const loginBtn = document.getElementById('login-btn');
 const logoutBtn = document.getElementById('logout-btn');
 
+const editionBanner = document.getElementById('edition-banner');
+const editionBtn = document.getElementById('edition-btn');
+
 let allWorks = [];
 
 // Affichage des projets
@@ -88,6 +91,8 @@ async function init() {
         if (sessionStorage.getItem('token') !== null) {
             loginBtn.parentNode.setAttribute('hidden', true);
             logoutBtn.removeAttribute('hidden');
+            editionBanner.removeAttribute('hidden');
+            editionBtn.removeAttribute('hidden');
         } else {
             await getCategories();
         }
