@@ -10,9 +10,14 @@ const logoutBtn = document.getElementById('logout-btn');
 const editionBanner = document.getElementById('edition-banner');
 const editionBtn = document.getElementById('edition-btn');
 
+const dialogTag = document.getElementById('dialog');
+const galleryEdit = document.getElementById('gallery-edit');
+
+
 let allWorks = [];
 
 // Affichage des projets
+
 async function getWorks() {
     const works = await getData(worksApiPath);
     allWorks = works;
@@ -44,6 +49,7 @@ function displayWorks(works) {
 }
 
 // Gestion de l'affichage des catégories
+
 async function getCategories() {
     const categories = await getData(categoriesApiPath);
 
@@ -84,6 +90,107 @@ function removeSelectedCategory() {
     });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const triggers = document.querySelectorAll('[aria-haspopup="dialog"]');
+
+    const open = function (dialog) {
+        dialog.setAttribute('aria-hidden', false);
+    };
+
+    const close = function (dialog) {
+        dialog.setAttribute('aria-hidden', true);
+    };
+
+    triggers.forEach((trigger) => {
+        const dialog = document.getElementById(trigger.getAttribute('aria-controls'));
+        const dismissTriggers = dialog.querySelectorAll('[data-dismiss]');
+
+        trigger.addEventListener('click', (event) => {
+            event.preventDefault();
+            open(dialog);
+        });
+
+        dismissTriggers.forEach((dismissTrigger) => {
+            const dismissDialog = document.getElementById(dismissTrigger.dataset.dismiss);
+            dismissTrigger.addEventListener('click', (event) => {
+                event.preventDefault();
+                close(dismissDialog);
+            });
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === dialog) {
+                close(dialog);
+            }
+        });
+    });
+})
+
+// Admin
+
+function setAdminActions() {
+    editionBtn.addEventListener('click', () => {
+        displayEditableWorks(allWorks);
+    });
+}
+
+function displayEditableWorks(works) {
+    galleryEdit.replaceChildren();
+
+    works.forEach(element => {
+        const figure = document.createElement('figure');
+        figure.setAttribute('photo-id', element.id);
+        const removeIcon = document.createElement('span');
+        removeIcon.className = 'image-gallery-remove';
+        removeIcon.setAttribute('photo-id', element.id);
+        const icon = document.createElement('img');
+        icon.className = 'icon-img';
+        icon.src = './assets/icons/trash-can.svg';
+        icon.alt = 'Supprimer la photo';
+        removeIcon.appendChild(icon);
+        const image = document.createElement('img');
+        image.src = element.imageUrl;
+        image.alt = element.title;
+        figure.append(removeIcon, image);
+        galleryEdit.appendChild(figure);
+    });
+
+    document.querySelectorAll('.image-gallery-remove').forEach((imageGallery) => {
+        imageGallery.addEventListener('click', () => {
+            const imageId = imageGallery.getAttribute('photo-id');
+            removeWork(imageId);
+        });
+    });
+}
+
+async function removeWork(imageId) {
+    const apiPath = worksApiPath + imageId;
+    try {
+        const response = await fetch(apiPath, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${sessionStorage.getItem('token')}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Impossible de supprimer l\'élément sélectionné.');
+        } else {
+            const index = allWorks.findIndex(item => item.id === Number(imageId));
+            if (index !== -1) {
+                allWorks.splice(index, 1);
+            }
+            displayWorks(allWorks);
+            displayEditableWorks(allWorks);
+        }
+    } catch (error) {
+        console.error(error);
+        document.getElementById('gallery-form').textContent = error.message;
+    }
+}
+
+
+
 // Initialisation
 async function init() {
     try {
@@ -93,6 +200,7 @@ async function init() {
             logoutBtn.removeAttribute('hidden');
             editionBanner.removeAttribute('hidden');
             editionBtn.removeAttribute('hidden');
+            setAdminActions();
         } else {
             await getCategories();
         }

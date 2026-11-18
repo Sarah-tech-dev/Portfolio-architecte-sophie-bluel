@@ -44,13 +44,34 @@
 	<section id="portfolio">
 		<div class="subtitle-container">
 			<h2>Mes Projets</h2>
-			<button id="edition-btn" type="button" hidden>
+			<button id="edition-btn" type="button" aria-haspopup="dialog" aria-controls="dialog" hidden>
 				<img src="./assets/icons/edit.svg" class="icon-img" aria-hidden="true">
 				<span>modifier</span>
 			</button>
 		</div>
 		<ul id="categories"></ul>
 		<div id="gallery" class="gallery"></div>
+		<aside
+			id="dialog"
+			role="dialog"
+			aria-labelledby="dialog-title-gallery"
+			aria-modal="true"
+			aria-hidden="true"
+			tabindex="-1"
+			class="dialog-container"
+		>
+			<div class="dialog-container-box">
+				<button aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog" class="close-modal-btn" type="button">
+					<img src="./assets/icons/x.svg" class="icon-img" alt="image du bouton de fermeture">
+				</button>
+				<h3 id="dialog-title-gallery">Galerie Photo</h3>
+				<form action="#" method="post" id="gallery-form">
+					<div id="gallery-edit"></div>
+				</form>
+				<hr>
+				<button id="add-work" type="button">Ajouter une photo</button>
+			</div>
+		</aside>
 	</section>
 	<section id="contact">
 		<h2>Contact</h2>
