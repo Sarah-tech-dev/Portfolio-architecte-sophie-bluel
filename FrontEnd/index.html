@@ -69,7 +69,52 @@
 					<div id="gallery-edit"></div>
 				</form>
 				<hr>
-				<button id="add-work" type="button">Ajouter une photo</button>
+				<button id="add-work" type="button" aria-haspopup="dialog" aria-controls="dialog2">Ajouter une photo</button>
+			</div>
+		</aside>
+		<aside
+			id="dialog2"
+			role="dialog"
+			aria-labelledby="dialog-title-add-work"
+			aria-modal="true"
+			aria-hidden="true"
+			tabindex="-1"
+			class="dialog-container"
+		>
+			<div id="add-work-container" class="dialog-container-box">
+				<div class="dialog-box-nav">
+					<button aria-label="Précédent" title="Page précédente de la modale" type="button" class="previous-modal-btn" id="previous">
+						<img src="./assets/icons/arrow-left.svg" class="icon-img" alt="image du bouton précédent">
+					</button>
+					<button aria-label="Fermer" title="Fermer cette fenêtre modale" data-dismiss="dialog2" type="button" class="close-modal-btn">
+						<img src="./assets/icons/x.svg" class="icon-img" alt="image du bouton de fermeture">
+					</button>
+				</div>
+				<h3 id="dialog-title-add-work">Ajout photo</h3>
+				<form action="#" method="post" id="work-form">
+					<div id="picture-container">
+						<img src="./assets/icons/no-image.svg" class="icon-img" alt="pas d'image">
+						<label for="picture">+ Ajouter photo</label>
+						<p class="picture-constraint">jpg, png : 4mo max</p>
+					</div>
+					<div id="preview-container" hidden>
+						<img id="preview" alt="Aperçu de l'image">
+					</div>
+					<input type="file" name="image" id="picture" accept=".jpg,.jpeg,.png" hidden>
+					<div class="error-message"></div>
+					<label for="picture-title">Titre</label>
+					<input type="text" name="title" id="picture-title">
+					<div class="error-message"></div>
+					<label for="categories-list">Catégorie</label>
+					<select id="categories-list" name="category">
+						<option></option>
+					</select>
+					<div class="error-message"></div>
+					<hr>
+					<button id="work-form-submit-btn" type="submit" disabled>Valider</button>
+					<div class="error-message"></div>
+					<div class="success-message" hidden>L'image a bien été ajoutée.</div>
+				</form>
 			</div>
 		</aside>
 	</section>

@@ -128,7 +128,9 @@ nav li {
 li:hover {
 	color: #B1663C;
 }
-#introduction {
+#introduction,
+.dialog-container-box,
+#picture-container {
 	display: flex;
 	align-items: center;
 }
@@ -214,17 +216,20 @@ li:hover {
 }
 
 #contact > *,
-#login > * {
+#login > *,
+#add-work-container > * {
 	text-align: center;
 }
 
 #contact h2, 
-#login h2 {
+#login h2,
+#add-work-container h2 {
 	margin-bottom: 20px;
 }
 
 #contact form,
-#login form {
+#login form,
+#add-work-container form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
@@ -232,7 +237,9 @@ li:hover {
 }
 
 #contact input,
-#login input {
+#login input,
+#add-work-container input,
+#add-work-container select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -240,7 +247,8 @@ li:hover {
 }
 
 #contact label,
-#login label {
+#login label,
+#add-work-container label {
 	margin: 2em 0 1em 0;
 }
 
@@ -261,7 +269,9 @@ input[type="submit"] {
 	border-radius: 60px ;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover,
+#work-form-submit-btn:hover,
+#add-work:hover {
 	background-color: #0E2F28;
 }
 
@@ -328,6 +338,11 @@ input[type="submit"]:hover {
 	transition: .2s;
 }
 
+.dialog-container[aria-hidden="true"] {
+	visibility: hidden;
+	opacity: 0;
+}
+
 .dialog-container-box {
 	overflow: auto;
 	width: 35rem;
@@ -337,9 +352,7 @@ input[type="submit"]:hover {
 	padding: 2.4rem;
 	background-color: white;
 	border-radius: 14px;
-	display: flex;
 	flex-direction: column;
-	align-items: center;
 	h3 {
 		text-align: center;
 		font-size: 2rem;
@@ -361,8 +374,13 @@ input[type="submit"]:hover {
 	select {
 		background-color: white;
 	}
-	.close-modal-btn {
-		align-self: flex-end;
+	.dialog-box-nav {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+	.close-modal-btn,
+	.previous-modal-btn {
 		cursor: pointer;
 		background: none;
 		border: none;
@@ -370,12 +388,8 @@ input[type="submit"]:hover {
 		margin: 0;
 		font: inherit;
 		color: inherit;
+		align-self: flex-end;
 	}
-}
-
-.dialog-container[aria-hidden="true"] {
-	visibility: hidden;
-	opacity: 0;
 }
 
 #gallery-form{
@@ -403,6 +417,61 @@ input[type="submit"]:hover {
 	.icon-img {
 		filter: brightness(0) invert(1);
 	}
+}
+
+#add-work-container {
+	margin: auto;
+}
+
+#work-form {
+	.error-message {
+		align-self: self-start;
+		margin: 0;
+	}
+	.success-message {
+		color: #1D6154;
+		align-self: center;
+	}
+}
+
+#picture-container {
+	padding: 2rem;
+	background-color: #E8F1F6;
+	flex-direction: column;
+	border-radius: 14px;
+	label[for="picture"] {
+		color: #306685;
+		background-color: #CBD6DC;
+		border: solid 2px #CBD6DC;
+		padding: 1rem 3rem;
+		border-radius: 60px;
+		font-size: 1.1rem;
+		margin: 1rem 0;
+	}
+	.picture-constraint {
+		font-size: 0.7rem;
+	}
+	.icon-img {
+		height: 76px;
+		width: 76px;
+	}
+}
+
+#preview-container {
+	background-color: #E8F1F6;
+	text-align: center;
+	border-radius: 14px;
+	width: auto;
+	height: 12rem;
+	img {
+	width: auto;
+	height: 12rem;
+	object-fit: cover;
+	}
+}
+
+#work-form-submit-btn:disabled {
+	background-color: rgba(150, 146, 146, 0.7);
 }
 
 footer nav ul {
