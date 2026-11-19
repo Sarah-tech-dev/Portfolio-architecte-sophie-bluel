@@ -80,7 +80,7 @@ async function getCategories() {
     categoryName.addEventListener('click', () => {
         removeSelectedCategory();
         categoryName.classList.add('selected');
-        displayWorksByCategory();
+        displayWorksByCategory(0);
     });
     categories.forEach(element => {
         const categoryName = document.createElement('li');
@@ -210,7 +210,6 @@ async function removeWork(imageId) {
             displayEditableWorks(allWorks);
         }
     } catch (error) {
-        console.error(error);
         document.getElementById('gallery-form').textContent = error.message;
     }
 }
@@ -293,7 +292,6 @@ workForm.addEventListener('submit', async (event) => {
         successMessage.hidden = false;
 
     } catch (error) {
-        console.error(error);
         insertErrors(error, workFormSubmitBtn.nextElementSibling);
     }
 })
@@ -396,7 +394,6 @@ async function init() {
             await getCategories();
         }
     } catch (error) {
-        console.error(error);
         galleryTag.textContent = error.message;
     }
     logoutBtn.addEventListener('click', () => {
