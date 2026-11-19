@@ -80,7 +80,7 @@ async function getCategories() {
     categoryName.addEventListener('click', () => {
         removeSelectedCategory();
         categoryName.classList.add('selected');
-        displayWorksByCategory();
+        displayWorksByCategory(0);
     });
     categories.forEach(element => {
         const categoryName = document.createElement('li');
